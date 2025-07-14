@@ -1,5 +1,6 @@
 import { ChevronRightIcon, TrashIcon } from "lucide-react";
 
+
 function Tasks({tasks, onDeleteTaskClick, onTaskClick}) {
   
   return (
@@ -31,3 +32,7 @@ export default Tasks;
 
 //para use icone instalar lucide-icons/react
 //npm install lucide
+//instalar bibliote uuid para trabalhar com aleatorios em javaScript
+//npm install uuid
+//import { v4 as uuidv4 } from 'uuid'; //para gerar id aleatorio
+//const id = uuidv4(); //gerar id aleatorio

@@ -6,7 +6,12 @@ function Tasks({tasks, onDeleteTaskClick, onTaskClick}) {
   const navigate = useNavigate();
 
   function onSeeDatailsClick(task) {
-    navigate(`/task?title=${task.title}&description=${task.description}`);
+    const queryParams = new URLSearchParams();
+    queryParams.set("title", task.title);
+    queryParams.set("description", task.description);
+    navigate(`/task?${queryParams.toString()}`);
+    // Redireciona para a página de detalhes da tarefa com os parâmetros de consulta
+    //navigate(`/task?title=${task.title}&description=${task.description}`);
   }
 
   return (

@@ -63,7 +63,11 @@ function App() {
           Gerenciador de Tarefas
         </h1>
         <AddTasks onAddTaskSubmit={onAddTaskSubmit} />
-        <Tasks tasks={tasks} onTaskClick={onTaskClick} onDeleteTaskClick={onDeleteTaskClick} />
+        <Tasks 
+          tasks={tasks}
+          onTaskClick={onTaskClick}
+          onDeleteTaskClick={onDeleteTaskClick}
+        />
       </div>
     </div>
   );

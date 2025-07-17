@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Tasks from "./components/Tasks";
 import AddTasks from "./components/AddTasks";
 import {v4} from 'uuid'; 
@@ -8,7 +8,7 @@ import {v4} from 'uuid';
 
 function App() {
   
-  const [tasks, setTasks] = useState([
+  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || [
     { id: 1, 
     title: "Estudar programação",
     description: "estudar programação .net para teste baresdev full stack",
@@ -26,6 +26,11 @@ function App() {
   } 
 
   ]);
+
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
+    
 
   function onTaskClick(taskId) {
     const newTasks = tasks.map(task => {

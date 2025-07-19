@@ -1,5 +1,6 @@
 import { ChevronRightIcon, TrashIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import Button from "./Button";
 
 
 function Tasks({tasks, onDeleteTaskClick, onTaskClick}) {
@@ -25,13 +26,12 @@ function Tasks({tasks, onDeleteTaskClick, onTaskClick}) {
                 >
                   {task.title}
                 </button>
-                <button onClick={() => onSeeDatailsClick(task)}
-                className="bg-slate-400 p-2 rounded-md text-white">
+                <Button onClick={() => onSeeDatailsClick(task)}>
                   <ChevronRightIcon />
-                </button>
-                <button onClick={()=> onDeleteTaskClick(task.id)} className="bg-slate-400 p-2 rounded-md text-white">
+                </Button>
+                <Button onClick={()=> onDeleteTaskClick(task.id)} >
                   <TrashIcon/>
-                </button>
+                </Button>
               </li>
             ))}
           </ul>
@@ -49,3 +49,6 @@ export default Tasks;
 //import { v4 as uuidv4 } from 'uuid'; //para gerar id aleatorio
 //const id = uuidv4(); //gerar id aleatorio
 //npm i react-router-dom
+
+//api jsonplacerholder
+//https://jsonplaceholder.typicode.com/

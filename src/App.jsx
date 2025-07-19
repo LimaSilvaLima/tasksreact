@@ -8,30 +8,35 @@ import {v4} from 'uuid';
 
 function App() {
   
-  const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || [
-    { id: 1, 
-    title: "Estudar programação",
-    description: "estudar programação .net para teste baresdev full stack",
-    isCompleted: false 
-  },
-  { id: 2, 
-    title: "Estudar ingles",
-    description: "Revisao de ingles para entrevista turing",
-    isCompleted: false 
-  },
-  { id: 3,
-    title: "Escrever petição",
-    description: "escrever petição de revisional do cliente Jeferson",
-    isCompleted: false 
-  } 
-
+  const [tasks, setTasks] = useState(
+    JSON.parse(localStorage.getItem("tasks")) || [
+    
   ]);
 
-  useEffect(() => {
+  useEffect( () => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
+  
+ 
     
+useEffect(()=>{
+   const fetchTasks = async() => {
+    const response = await fetch(
+      'https://jsonplaceholder.typicode.com/todos?_limit=10',
+      {
+        method: 'GET'
+      }
+      
+    );
+    const data = await response.json()
+    //Para chamar api o place holder
+    setTasks(data)
+  };
+  //fetchTasks();
+}, []);
 
+  
+  
   function onTaskClick(taskId) {
     const newTasks = tasks.map(task => {
       if (task.id=== taskId){
@@ -79,3 +84,26 @@ function App() {
 }
 
 export default App;
+
+
+/*
+const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem("tasks")) || [
+    { id: 1, 
+    title: "Estudar programação",
+    description: "estudar programação .net para teste baresdev full stack",
+    isCompleted: false 
+  },
+  { id: 2, 
+    title: "Estudar ingles",
+    description: "Revisao de ingles para entrevista turing",
+    isCompleted: false 
+  },
+  { id: 3,
+    title: "Escrever petição",
+    description: "escrever petição de revisional do cliente Jeferson",
+    isCompleted: false 
+  } 
+
+  ]);
+
+  */
